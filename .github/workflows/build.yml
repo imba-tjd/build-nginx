@@ -13,6 +13,8 @@ jobs:
         sudo apt install -y cmake libpcre3-dev zlib1g-dev libunwind-dev upx;
 
     - run: bash ./build.sh;
+      env:
+        CC: clang
 
     - uses: actions/upload-artifact@v2
       with:

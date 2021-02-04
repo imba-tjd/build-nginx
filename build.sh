@@ -65,7 +65,7 @@ mkdir ./src && pushd ./src;
 
 curl -L https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | tar xzf -;
 cd ./nginx-$NGINX_VERSION;
-sed -i -e '/NGX_GCC_OPT="-O"/d' -e '/CFLAGS="$CFLAGS ${NGX_GCC_OPT:--O} -W"/d' -e '/CFLAGS="$CFLAGS -g"/d' ./auto/cc/gcc;
+sed -i -e '/NGX_CLANG_OPT="-O"/d' -e '/CFLAGS="$CFLAGS -g"/d' ./auto/cc/clang;
 ./configure $CONFIG "$CC_OPTS" "$LD_OPTS";
 make -sj$(nproc);
 strip -s ./objs/nginx;
