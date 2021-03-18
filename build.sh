@@ -61,8 +61,6 @@ CONFIG="\
 CC_OPTS=--with-cc-opt="-Ofast -fstack-protector -fpic -m64 -gsplit-dwarf";
 LD_OPTS=--with-ld-opt="-fpie -pie -flto -Wl,-z,relro -Wl,-z,now -Wl,--as-needed";
 
-mkdir ./src && pushd ./src;
-
 curl -L https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | tar xzf -;
 cd ./nginx-$NGINX_VERSION;
 sed -i -e '/NGX_CLANG_OPT="-O"/d' -e '/CFLAGS="$CFLAGS -g"/d' ./auto/cc/clang;
@@ -70,7 +68,4 @@ sed -i -e '/NGX_CLANG_OPT="-O"/d' -e '/CFLAGS="$CFLAGS -g"/d' ./auto/cc/clang;
 make -sj$(nproc);
 strip -s ./objs/nginx;
 upx -9 ./objs/nginx;
-cp ./objs/nginx ../../;
-
-popd;
-./nginx -V;
+cp ./objs/nginx ../;

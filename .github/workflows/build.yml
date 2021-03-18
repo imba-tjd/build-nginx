@@ -1,5 +1,7 @@
 name: Build
-on: push
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -15,6 +17,8 @@ jobs:
     - run: bash ./build.sh;
       env:
         CC: clang
+
+    - run: ./nginx -V;
 
     - uses: actions/upload-artifact@v2
       with:
