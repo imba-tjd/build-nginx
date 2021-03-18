@@ -16,7 +16,7 @@ jobs:
 
     - run: bash ./build.sh;
       env:
-        CC: clang
+        CC: clang-11
 
     - run: ./nginx -V;
 
