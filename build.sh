@@ -2,7 +2,7 @@
 # 未取消的模块：access、gzip、rewrite、proxy、http_limit_req、http_upstream_ip_hash、upstream_least_conn、http_upstream_keepalive、stream_return
 set -ex;
 
-NGINX_VERSION=${NGINX_VERSION:-1.19.8};
+NGINX_VERSION=${NGINX_VERSION:-1.19.9};
 CONFIG="\
     --prefix=/etc/nginx \
     --sbin-path=/usr/sbin/nginx \
@@ -58,8 +58,8 @@ CONFIG="\
     --without-stream_upstream_zone_module \
     --with-openssl-opt=enable-ec_nistp_64_gcc_128 \
 ";
-CC_OPTS=--with-cc-opt="-Ofast -fstack-protector -fpic -m64 -gsplit-dwarf";
-LD_OPTS=--with-ld-opt="-fpie -pie -flto -Wl,-z,relro -Wl,-z,now -Wl,--as-needed";
+CC_OPTS=--with-cc-opt="-Ofast -fstack-protector -fpic -m64 -gsplit-dwarf -flto=thin";
+LD_OPTS=--with-ld-opt="-fpie -pie -flto -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -flto=thin";
 
 curl -L https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | tar xzf -;
 cd ./nginx-$NGINX_VERSION;
