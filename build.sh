@@ -59,7 +59,7 @@ CONFIG="\
     --with-openssl-opt=enable-ec_nistp_64_gcc_128 \
 ";
 CC_OPTS=--with-cc-opt="-Ofast -fstack-protector -fpic -m64 -gsplit-dwarf -flto=thin";
-LD_OPTS=--with-ld-opt="-fpie -pie -flto -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -flto=thin";
+LD_OPTS=--with-ld-opt="-fpie -pie -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -flto=thin";
 
 curl -L https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | tar xzf -;
 cd ./nginx-$NGINX_VERSION;
