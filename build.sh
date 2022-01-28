@@ -67,5 +67,5 @@ sed -i -e '/NGX_CLANG_OPT="-O"/d' -e '/CFLAGS="$CFLAGS -g"/d' ./auto/cc/clang;
 ./configure $CONFIG "$CC_OPTS" "$LD_OPTS";
 make -sj$(nproc);
 strip -s ./objs/nginx;
-upx -9 ./objs/nginx;
+upx --lzma ./objs/nginx;
 cp ./objs/nginx ../;
