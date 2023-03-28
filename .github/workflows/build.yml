@@ -8,19 +8,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@main
 
     - run: |
         sudo apt update && \
-        sudo apt install -y cmake libpcre3-dev zlib1g-dev libunwind-dev upx;
+        sudo apt install -y libpcre3-dev zlib1g-dev upx;
 
     - run: bash ./build.sh;
       env:
-        CC: clang-12
+        CC: clang-14
 
     - run: ./nginx -V;
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@main
       with:
         name: nginx
         path: ./nginx
