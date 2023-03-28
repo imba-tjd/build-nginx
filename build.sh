@@ -54,7 +54,7 @@ LD_OPTS=--with-ld-opt="-fpie -pie -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -flto=
 # curl -L https://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | tar xzf -
 # cd ./nginx-$NGINX_VERSION
 curl -LO https://github.com/nginx-quic/nginx-quic/archive/refs/heads/quic.zip
-unzip -q quic.zip && rm quic.zip && cd nginx-quic-quic
+unzip -q quic.zip && rm quic.zip && cd nginx-quic-quic && cp auto/configure .
 
 sed -i -e '/NGX_CLANG_OPT="-O"/d' -e '/CFLAGS="$CFLAGS -g"/d' ./auto/cc/clang
 ./configure $CONFIG "$CC_OPTS" "$LD_OPTS"
